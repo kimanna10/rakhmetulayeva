@@ -2,13 +2,22 @@
 import Link from "next/link";
 
 export default function NavLink({ href, children, setIsOpen }) {
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const id = href.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        // Прокрутка с учетом фиксированного хедера (100px)
+        const top = element.offsetTop - 100;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }
     if (typeof setIsOpen === "function") {
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 100); // даёт время меню красиво закрыться
+      setTimeout(() => setIsOpen(false), 100);
     }
   };
+
   return (
     <Link
       href={href}

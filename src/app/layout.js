@@ -13,8 +13,9 @@ const lexendSans = Lexend({
 });
 
 export const metadata = {
-  title: "Rakhmetulayeva Kamila",
-  description: "Rakhmetulayeva Kamila - choreographer",
+  title: "RAKHMETULAYEVA KAMILA",
+  description:
+    "AKHMETULAYEVA KAMILA - Foun der of TOLK Company | Director | Creative Director | Choreoprapher | Movement Director",
 };
 
 export default function RootLayout({ children }) {
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`${lexendSans.variable} ${manropeSans.variable}  antialiased bg-bg text-text font-manrope`}
       >
         <Header />
-        {children}
+        <main className="pt-[104px]">{children}</main>
         <Footer />
       </body>
     </html>

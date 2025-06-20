@@ -1,8 +1,10 @@
 import ContactSection from "@/components/sections/ContactSection";
+import Section from "@/components/ui/Section";
 export default function About() {
   return (
-    <main className="pt-[104px]">
+    <>
+      <Section title="About"></Section>
       <ContactSection />
-    </main>
+    </>
   );
 }

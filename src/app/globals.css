@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin './hero.js';
 
 
 @config "../../tailwind.config.mjs";
