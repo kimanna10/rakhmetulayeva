@@ -9,8 +9,14 @@ export default async function Projects() {
     process.env.NEXT_PUBLIC_BASE_URL || "https://rakhmetulayeva.vercel.app";
 
   const res = await fetch(`${baseUrl}/api/projects`, {
-    cache: "force-cache", // <== SSG
+    cache: "force-cache",
   });
+
+  if (!res.ok) {
+    const text = await res.text(); // выведет ошибку от сервера
+    throw new Error(`Ошибка загрузки /api/projects: ${res.status} — ${text}`);
+  }
+
   const projects = await res.json();
 
   return (
