@@ -5,7 +5,8 @@ import Link from "next/link";
 export const dynamic = "force-static";
 
 export default async function Projects() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://rakhmetulayeva.vercel.app";
 
   const res = await fetch(`${baseUrl}/api/projects`, {
     cache: "force-cache", // <== SSG

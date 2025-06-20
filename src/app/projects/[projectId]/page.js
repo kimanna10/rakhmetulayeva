@@ -4,7 +4,8 @@ export default async function ProjectId({ params }) {
   const awaitedParams = await params; // ← обязательно!
   const id = awaitedParams.projectId;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://rakhmetulayeva.vercel.app";
   const res = await fetch(`${baseUrl}/api/projects/${id}`);
   const project = await res.json();
 
