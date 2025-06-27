@@ -91,6 +91,7 @@ export default async function AdminPage() {
   // 2. Проверяем токен
   try {
     if (!token) throw new Error("Токен отсутствует");
+    console.log(token);
 
     const userData = await verifyToken(token);
 
