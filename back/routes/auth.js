@@ -64,11 +64,10 @@ router.post("/login", async (req, res) => {
     // });
 
     res.cookie("token", token, {
-      // token - ваш JWT
       httpOnly: true,
       secure: true,
-      sameSite: "None",
-      domain: ".onrender.com", // Важно: точка в начале!
+      sameSite: "none",
+      domain: "rakhmetulayeva.onrender.com", // Без точки в начале!
       path: "/",
       maxAge: 24 * 60 * 60 * 1000, // 24 часа
     });
