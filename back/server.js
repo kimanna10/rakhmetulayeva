@@ -23,8 +23,10 @@ await db.read();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000", // фронт
-    credentials: true, // обязательно
+    origin: ["https://rakhmetulayeva.vercel.app", "http://localhost:3000"],
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(cookieParser());
