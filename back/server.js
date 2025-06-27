@@ -33,6 +33,18 @@ app.use("/auth", authRouter);
 app.use("/projects", projectsRouter);
 app.use("/contacts", contactsRouter);
 
+// Мидлвар для проверки куки
+app.use((req, res, next) => {
+  console.log("Полученные куки:", req.cookies); // Добавьте этот лог
+  next();
+});
+
+// Эндпоинт проверки авторизации
+app.get("/check-auth", (req, res) => {
+  console.log("Токен из куки:", req.cookies.token); // Проверьте это
+  res.json({ cookies: req.cookies });
+});
+
 app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
 });

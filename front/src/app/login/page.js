@@ -29,6 +29,7 @@ export default function LoginPage() {
             password: password.trim(),
           }),
           credentials: "include",
+          mode: "cors",
         }
       );
 
