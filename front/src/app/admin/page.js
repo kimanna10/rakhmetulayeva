@@ -51,71 +51,130 @@
 //   }
 // }
 
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+// import { cookies } from "next/headers";
+// import { redirect } from "next/navigation";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
-export default async function AdminPage() {
-  // 1. Получаем куки через Next.js cookies()
-  const cookieStore = cookies();
-  const token = cookieStore.get("token")?.value;
+// export default async function AdminPage() {
+//   // 1. Получаем куки через Next.js cookies()
+//   const cookieStore = cookies();
+//   const token = cookieStore.get("token")?.value;
 
-  // 2. Дебаг-логирование
-  console.log("Все доступные куки:", Array.from(cookieStore.getAll()));
-  console.log("Полученный токен:", token);
+//   // 2. Дебаг-логирование
+//   console.log("Все доступные куки:", Array.from(cookieStore.getAll()));
+//   console.log("Полученный токен:", token);
 
-  // 3. Если токена нет - пробуем альтернативный способ
-  if (!token) {
-    try {
-      // Пытаемся получить токен через API-эндпоинт
-      const authCheck = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/check-auth`,
-        {
-          credentials: "include",
-          cache: "no-store",
+//   // 3. Если токена нет - пробуем альтернативный способ
+//   if (!token) {
+//     try {
+//       // Пытаемся получить токен через API-эндпоинт
+//       const authCheck = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/check-auth`,
+//         {
+//           credentials: "include",
+//           cache: "no-store",
+//         }
+//       );
+
+//       if (authCheck.ok) {
+//         const { token: newToken } = await authCheck.json();
+//         if (newToken) {
+//           // Если получили токен - продолжаем
+//           return redirect("/admin?retry=1");
+//         }
+//       }
+//     } catch (error) {
+//       console.error("Ошибка проверки авторизации:", error);
+//     }
+
+//     // Если все попытки провалились - редирект
+//     return redirect("/login");
+//   }
+
+//   // 4. Проверка токена
+//   try {
+//     const verifyUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/verify`;
+
+//     const res = await fetch(verifyUrl, {
+//       method: "GET",
+//       headers: {
+//         Cookie: `token=${token}`, // Явная передача куки
+//         "Content-Type": "application/json",
+//       },
+//       credentials: "include", // Важно!
+//       cache: "no-store",
+//     });
+
+//     if (!res.ok) throw new Error("Токен недействителен");
+
+//     return (
+//       <div className="p-10">
+//         <h1 className="text-2xl font-bold">Админ-панель</h1>
+//         <p>Добро пожаловать!</p>
+//       </div>
+//     );
+//   } catch (error) {
+//     console.error("Ошибка проверки:", error);
+//     return redirect("/login");
+//   }
+// }
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+export default function AdminPage() {
+  const [authInfo, setAuthInfo] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const verifyAuth = async () => {
+      try {
+        // 1. Проверяем куки
+        const cookieRes = await fetch(
+          "https://rakhmetulayeva.onrender.com/auth/verify",
+          {
+            credentials: "include",
+          }
+        );
+
+        if (cookieRes.ok) {
+          const data = await cookieRes.json();
+          return setAuthInfo(data);
         }
-      );
 
-      if (authCheck.ok) {
-        const { token: newToken } = await authCheck.json();
-        if (newToken) {
-          // Если получили токен - продолжаем
-          return redirect("/admin?retry=1");
+        // 2. Если куки не работают, пробуем localStorage
+        const token = localStorage.getItem("token");
+        if (token) {
+          const headerRes = await fetch(
+            "https://rakhmetulayeva.onrender.com/auth/verify",
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          const data = await headerRes.json();
+          setAuthInfo(data);
+        } else {
+          throw new Error("No auth tokens found");
         }
+      } catch (error) {
+        console.error("Auth error:", error);
+        router.push("/login");
       }
-    } catch (error) {
-      console.error("Ошибка проверки авторизации:", error);
-    }
+    };
 
-    // Если все попытки провалились - редирект
-    return redirect("/login");
-  }
+    verifyAuth();
+  }, []);
 
-  // 4. Проверка токена
-  try {
-    const verifyUrl = `${process.env.NEXT_PUBLIC_API_URL}/auth/verify`;
+  if (!authInfo) return <div>Проверка авторизации...</div>;
 
-    const res = await fetch(verifyUrl, {
-      method: "GET",
-      headers: {
-        Cookie: `token=${token}`, // Явная передача куки
-        "Content-Type": "application/json",
-      },
-      credentials: "include", // Важно!
-      cache: "no-store",
-    });
-
-    if (!res.ok) throw new Error("Токен недействителен");
-
-    return (
-      <div className="p-10">
-        <h1 className="text-2xl font-bold">Админ-панель</h1>
-        <p>Добро пожаловать!</p>
-      </div>
-    );
-  } catch (error) {
-    console.error("Ошибка проверки:", error);
-    return redirect("/login");
-  }
+  return (
+    <div className="p-10">
+      <h1 className="text-2xl font-bold">Админ-панель</h1>
+      <p>Добро пожаловать, {authInfo.user.username}!</p>
+      <p className="text-sm text-gray-500">
+        Токен получен через: {authInfo.tokenSource}
+      </p>
+    </div>
+  );
 }
