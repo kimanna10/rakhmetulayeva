@@ -23,7 +23,7 @@ await db.read();
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // фронт
+    origin: process.env.CLIENT_URL || "http://localhost:3000", // фронт
     credentials: true, // обязательно
   })
 );
