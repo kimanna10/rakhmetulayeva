@@ -19,15 +19,18 @@ export default function LoginPage() {
       // });
 
       // 2. Отправка запроса с явным URL
-      const response = await fetch("http://localhost:3001/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username.trim(),
-          password: password.trim(),
-        }),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://rakhmetulayeva.onrender.com/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: username.trim(),
+            password: password.trim(),
+          }),
+          credentials: "include",
+        }
+      );
 
       // 3. Обработка ответа
       const data = await response.json();
