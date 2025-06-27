@@ -55,12 +55,22 @@ router.post("/login", async (req, res) => {
     );
 
     // Установка куки
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === "production",
+    //   sameSite: "strict",
+    //   maxAge: 60 * 60 * 1000, // 1 час
+    //   path: "/",
+    // });
+
     res.cookie("token", token, {
+      // token - ваш JWT
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 1000, // 1 час
+      secure: true,
+      sameSite: "None",
+      domain: ".onrender.com", // Важно: точка в начале!
       path: "/",
+      maxAge: 24 * 60 * 60 * 1000, // 24 часа
     });
 
     res.status(200).json({
