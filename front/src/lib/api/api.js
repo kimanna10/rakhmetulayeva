@@ -17,7 +17,7 @@
 // }
 
 export const BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 // export async function fetchFromApi(endpoint, options = {}) {
 //   const res = await fetch(`${BASE_URL}${endpoint}`, {
