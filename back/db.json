@@ -1,0 +1,56 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Sweet dreams",
+      "subtitle": "Creative Director / Art Director / Choreographer",
+      "description": "Director: Nur Niaz\nDOP: Dastan Zhumagulov\nProduction Designer: Yuki Kravchenko\nMUAH: An Milana\nColor: Nurtas Mamytbayev\nSound: Nick Alexander Park",
+      "img": "/images/portfolio2.png",
+      "link": "https://www.instagram.com/reel/CnCaZJoJ8Ko/",
+      "type": "instagram"
+    },
+    {
+      "id": 2,
+      "title": "Brunette: superstar illness",
+      "subtitle": "Choreographer / Dancer Casting Director",
+      "description": "Producer: Nare Manukyan\nDirector: SOBERSASHA\nCreative Director: Masha Zhemchuzhina \nDOP: Marc Miller",
+      "link": "https://www.youtube-nocookie.com/embed/-ImqhGe9G0s?si=qxouTisRdchnTq4G",
+      "type": "youtube"
+    },
+    {
+      "id": 3,
+      "title": "After Dark",
+      "subtitle": "Creative Director / Director / Choreographer",
+      "description": "DOP / Color / Edit: Usen Seidullaev\nSound: Nick Alexander Park\nDancers: TOLK Dance Company",
+      "img": "/images/portfolio6.png",
+      "link": "https://www.instagram.com/reel/CmMITEPq59I/?igsh=ZW1nenpoNHZwcnI0",
+      "type": "instagram"
+    },
+    {
+      "id": 4,
+      "title": "Viled f/w 202r5",
+      "subtitle": "Movement Director",
+      "description": "Production: Plan B\nDirection: Aibat Rakmanovsky\nDOP: Madiyar Satybaldiyev",
+      "img": "/images/portfolio7.png",
+      "link": "https://www.instagram.com/reel/DBESWTsijBO/",
+      "type": "instagram"
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "instagram": "rakhmetulayeva",
+      "email": "k.rakhmetulaeva@mail.ru"
+    }
+  ],
+
+  "users": [
+    {
+       "id": 1,
+       "username": "admin",
+       "password": "$2b$10$EqS1flG.qilxWAeO3X5emekLL73lhcCPXcbKbbuRrrp.3CHx3xDUu",
+       "role": "admin"
+    }
+]
+
+}
