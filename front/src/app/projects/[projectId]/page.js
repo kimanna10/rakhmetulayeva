@@ -2,11 +2,25 @@ import Section from "@/components/layouts/Section";
 import { getAllProjects, getProjectById } from "@/lib/api/projects";
 
 // Генерируем список путей заранее (SSG)
+// export async function generateStaticParams() {
+//   const projects = await getAllProjects();
+//   return projects.map((project) => ({
+//     projectId: project.id.toString(), // обязательно строка
+//   }));
+// }
+
 export async function generateStaticParams() {
-  const projects = await getAllProjects();
-  return projects.map((project) => ({
-    projectId: project.id.toString(), // обязательно строка
-  }));
+  try {
+    const res = await getAllProjects();
+    const projects = await res.json();
+
+    return projects.map((project) => ({
+      projectId: project.id.toString(),
+    }));
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return []; // Чтобы не падала сборка
+  }
 }
 
 export default async function ProjectId({ params }) {
