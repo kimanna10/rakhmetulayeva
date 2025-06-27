@@ -119,6 +119,7 @@ router.post("/login", async (req, res) => {
 router.get("/verify", async (req, res) => {
   // 1. Получаем токен из разных источников
   const token = req.headers.authorization?.split(" ")[1] || req.cookies?.token;
+  console.log("Полученные куки:", req.cookies); // Для дебага
 
   // 2. Логирование для отладки
   console.log("Запрос верификации:", {
