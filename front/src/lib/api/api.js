@@ -1,41 +1,5 @@
-// const BASE_URL =
-//   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
-
-// export async function fetchFromApi(endpoint, options = {}) {
-//   const res = await fetch(`${BASE_URL}${endpoint}`, {
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     ...options,
-//   });
-
-//   if (!res.ok) {
-//     throw new Error(`Ошибка при запросе ${endpoint}: ${res.status}`);
-//   }
-
-//   return res.json();
-// }
-
 export const BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
-
-// export async function fetchFromApi(endpoint, options = {}) {
-//   const res = await fetch(`${BASE_URL}${endpoint}`, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       ...(options.headers || {}),
-//     },
-//     credentials: "include", // ✅ отправлять cookies (в т.ч. токен)
-//     ...options,
-//   });
-
-//   if (!res.ok) {
-//     const text = await res.text();
-//     throw new Error(`Ошибка при запросе ${endpoint}: ${res.status} – ${text}`);
-//   }
-
-//   return res.json();
-// }
 
 export async function fetchFromApi(endpoint, options = {}) {
   try {

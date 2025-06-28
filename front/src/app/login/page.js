@@ -1,5 +1,7 @@
 "use client";
 
+import Section from "@/components/layouts/Section";
+import InputField from "@/components/ui/InputField";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -53,34 +55,36 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-8">
-      <h1 className="text-2xl font-bold mb-6">Вход в админку</h1>
+    <>
+      <Section title="Admin">
+        <div className="max-w-md mx-auto p-8">
+          <h1 className="text-2xl font-bold mb-6">Вход в админку</h1>
 
-      <input
-        type="text"
-        placeholder="Логин"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="w-full border p-2 mb-4"
-      />
+          <InputField
+            type="text"
+            placeholder="Логин"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
-      <input
-        type="password"
-        placeholder="Пароль"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="w-full border p-2 mb-4"
-      />
+          <InputField
+            type="password"
+            placeholder="Пароль"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-      <button
-        onClick={handleLogin}
-        disabled={loading}
-        className={`bg-black text-white px-4 py-2 w-full ${
-          loading ? "opacity-50 cursor-not-allowed" : ""
-        }`}
-      >
-        {loading ? "Загрузка..." : "Войти"}
-      </button>
-    </div>
+          <button
+            onClick={handleLogin}
+            disabled={loading}
+            className={`inline-block px-6 py-3 transition bg-primary hover:bg-opacity-90 cursor-pointer w-full ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {loading ? "Загрузка..." : "Войти"}
+          </button>
+        </div>
+      </Section>
+    </>
   );
 }
