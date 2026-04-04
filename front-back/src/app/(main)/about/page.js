@@ -1,13 +1,10 @@
 import Section from "@/components/layouts/Section";
 import Slider from "@/components/ui/Slider";
-import { supabase } from "@/lib/db";
 import { galleryService } from "@/services/gallery";
 
 export default async function About() {
   const images = await galleryService.getAll();
-  const { data } = await supabase.storage.from("images").list("");
 
-  console.log(data);
   return (
     <main className="pt-[104px]">
       <Section title="About">

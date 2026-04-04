@@ -1,61 +1,32 @@
-// "use client";
-// import Section from "@/components/layouts/Section";
+"use client";
+import { galleryService } from "@/services/gallery";
+import { useState } from "react";
 
-// import { useRouter } from "next/navigation";
-// import { useEffect, useState } from "react";
+export default function AdminPage() {
+  const [uploading, setUploading] = useState(false);
 
-// export default function AdminPage() {
-//   const [authInfo, setAuthInfo] = useState(null);
-//   const router = useRouter();
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-//   useEffect(() => {
-//     const verifyAuth = async () => {
-//       try {
-//         // 1. Проверяем куки
-//         const cookieRes = await fetch(
-//           "https://rakhmetulayeva.onrender.com/auth/verify",
-//           {
-//             credentials: "include",
-//           }
-//         );
+    try {
+      setUploading(true);
+      const url = await galleryService.upload(file);
+      console.log("Uploaded to:", url);
+      alert("File uploaded!");
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed!");
+    } finally {
+      setUploading(false);
+    }
+  };
 
-//         if (cookieRes.ok) {
-//           const data = await cookieRes.json();
-//           return setAuthInfo(data);
-//         }
-
-//         // 2. Если куки не работают, пробуем localStorage
-//         const token = localStorage.getItem("token");
-//         if (token) {
-//           const headerRes = await fetch(
-//             "https://rakhmetulayeva.onrender.com/auth/verify",
-//             {
-//               headers: { Authorization: `Bearer ${token}` },
-//             }
-//           );
-//           const data = await headerRes.json();
-//           setAuthInfo(data);
-//         } else {
-//           throw new Error("No auth tokens found");
-//         }
-//       } catch (error) {
-//         console.error("Auth error:", error);
-//         router.push("/login");
-//       }
-//     };
-
-//     verifyAuth();
-//   }, []);
-
-//   if (!authInfo) return <div>Проверка авторизации...</div>;
-
-//   return (
-//     <>
-//       <Section title="Admin-panel">
-//         <p>Добро пожаловать, {authInfo.user.username}!</p>
-
-//         <div className="flex flex-wrap gap-4"></div>
-//       </Section>
-//     </>
-//   );
-// }
+  return (
+    <main className="pt-[150px] flex flex-col gap-4 items-start">
+      <h1>Admin Page</h1>
+      <input type="file" onChange={handleUpload} />
+      {uploading && <p>Uploading...</p>}
+    </main>
+  );
+}

@@ -1,4 +1,5 @@
 // /app/api/gallery/route.js
+import { galleryService } from "@/services/gallery";
 
 export async function GET() {
   try {

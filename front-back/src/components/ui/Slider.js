@@ -35,7 +35,7 @@ export default function Slider({ images }) {
               >
                 <div className="relative w-full aspect-[3/4] bg-black">
                   <img
-                    src={img}
+                    src={img.url}
                     alt=""
                     className="absolute inset-0 object-cover w-full h-full"
                   />
