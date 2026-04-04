@@ -3,6 +3,7 @@ import ProjectSection from "@/components/sections/ProjectSection";
 import { categoryService } from "@/services/categories";
 import { projectService } from "@/services/projects";
 
+export const revalidate = 0;
 export default async function Projects() {
   const projects = await projectService.getAll();
   const categories = await categoryService.getAll();
