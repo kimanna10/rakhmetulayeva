@@ -31,7 +31,10 @@ export const galleryService = {
   },
 
   async getAll() {
-    const { data, error } = await supabase.from("gallery").select("*");
+    const { data, error } = await supabase
+      .from("gallery")
+      .select("*")
+      .neq("type", "main");
     if (error) throw new Error(error.message);
     return data;
   },
