@@ -20,7 +20,7 @@ export default async function About() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 mb-12">
           <div className="w-full overflow-hidden lg:h-full">
             <img
-              src="/images/1.jpg"
+              src="/images/1.jpeg"
               alt="about"
               className="object-cover w-full h-full"
             />
