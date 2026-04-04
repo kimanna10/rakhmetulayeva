@@ -6,12 +6,12 @@ export default async function About() {
     "/images/2.jpeg",
     "/images/3.jpeg",
     "/images/4.jpeg",
-    "/images/5.jpg",
-    "/images/6.jpg",
-    "/images/7.jpg",
-    "/images/8.jpg",
+    "/images/5.jpeg",
+    "/images/6.jpeg",
+    "/images/7.jpeg",
+    "/images/8.jpeg",
     "/images/9.png",
-    "/images/10.jpg",
+    "/images/10.jpeg",
   ];
 
   return (
