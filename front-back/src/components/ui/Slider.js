@@ -78,7 +78,7 @@ export default function Slider({ images }) {
           </button>
 
           <img
-            src={images[activeIndex]}
+            src={images[activeIndex].url}
             className="object-contain max-w-[90%] max-h-[90%]"
           />
         </div>
