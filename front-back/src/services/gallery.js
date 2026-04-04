@@ -34,7 +34,7 @@ export const galleryService = {
     const { data, error } = await supabase
       .from("gallery")
       .select("*")
-      .neq("type", "main");
+      .or("type.not.eq.main,type.is.null");
     if (error) throw new Error(error.message);
     return data;
   },
