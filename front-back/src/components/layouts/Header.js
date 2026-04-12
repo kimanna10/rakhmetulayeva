@@ -59,7 +59,7 @@ export default function Header() {
 
       {/* Мобильное меню */}
       <div
-        className={`fixed inset-0 z-[999] h-dvh w-screen bg-bg flex items-center justify-center flex-col gap-1 text-2xl transition-all duration-300 ease-in-out transform ${
+        className={`fixed inset-0 z-[999] h-vh w-screen bg-bg flex items-center justify-center flex-col gap-1 text-2xl transition-all duration-300 ease-in-out transform ${
           isOpen
             ? "opacity-100 scale-100 pointer-events-auto"
             : "opacity-0 scale-95 pointer-events-none"
