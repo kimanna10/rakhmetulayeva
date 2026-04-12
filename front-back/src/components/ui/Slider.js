@@ -47,7 +47,7 @@ export default function Slider({ images }) {
       </div>
 
       {activeIndex !== null && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-bg overflow-hidden">
+        <div className="fixed h-dvh inset-0 z-[9999] flex items-center justify-center bg-bg overflow-hidden">
           <button
             onClick={() => setActiveIndex(null)}
             className="absolute text-white top-6 right-6"
