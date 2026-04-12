@@ -16,7 +16,7 @@ export default function GoBack() {
   return (
     <button
       onClick={() => router.back()}
-      className="flex items-center gap-1 text-base mb-4 cursor-pointer"
+      className="flex items-center gap-1 text-base mb-8 cursor-pointer"
     >
       <ChevronLeft size={26} /> Back
     </button>

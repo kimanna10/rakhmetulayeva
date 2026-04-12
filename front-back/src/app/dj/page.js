@@ -2,7 +2,7 @@
 
 import Section from "@/components/layouts/Section";
 
-export default function Djsets() {
+export default function Dj() {
   const mixes = [
     {
       title: "kama.s.utra for Elevate Your Sound",
@@ -22,12 +22,12 @@ export default function Djsets() {
   ];
 
   return (
-    <Section title="DJ sets">
+    <Section title="DJ">
       <div className="space-y-10">
         {mixes.map((mix, idx) => (
           <div key={idx} className="space-y-3">
             {/* title */}
-            <h3 className="text-white text-lg">{mix.title}</h3>
+            <h3 className="text-white lg:text-lg text-base">{mix.title}</h3>
 
             {/* player */}
             <div className="w-full h-[166px] overflow-hidden bg-black/40 rounded-md">

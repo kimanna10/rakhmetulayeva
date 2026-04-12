@@ -2,12 +2,33 @@
 
 import DesktopGrid from "@/components/sections/projects/DesktopGrid";
 import MobileGrid from "@/components/sections/projects/MobileGrid";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function ProjectsClient({ projects, categories }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [active, setActive] = useState("all");
 
   const filters = ["all", ...categories.map((c) => c.name)];
+
+  useEffect(() => {
+    const urlFilter = searchParams.get("filter") || "all";
+    setActive(urlFilter);
+  }, [searchParams]);
+
+  const handleFilterChange = (filter) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (filter === "all") {
+      params.delete("filter");
+    } else {
+      params.set("filter", filter);
+    }
+
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   const filteredProjects =
     active === "all"
@@ -24,7 +45,7 @@ export default function ProjectsClient({ projects, categories }) {
         {filters.map((filter) => (
           <button
             key={filter}
-            onClick={() => setActive(filter)}
+            onClick={() => handleFilterChange(filter)}
             className={`
               px-4 py-2 text-sm rounded-full transition-all duration-300 cursor-pointer
               ${

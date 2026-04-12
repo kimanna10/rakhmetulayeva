@@ -10,7 +10,7 @@ export default function MobileGrid({ projects }) {
 
     if (pattern === 0 && projects[i + 1]) {
       items.push(
-        <div key={i} className="col-span-2 grid grid-cols-[2fr_1fr]">
+        <div key={i} className="col-span-2 grid grid-cols-[2fr_1fr] gap-4">
           <ProjectCard
             project={projects[i]}
             className=""
@@ -26,7 +26,7 @@ export default function MobileGrid({ projects }) {
     }
     if (pattern === 1 && projects[i + 1]) {
       items.push(
-        <div key={i} className="col-span-2 grid grid-cols-[1fr_2fr]">
+        <div key={i} className="col-span-2 grid grid-cols-[1fr_2fr] gap-4">
           <ProjectCard
             project={projects[i]}
             className=""
@@ -68,5 +68,5 @@ export default function MobileGrid({ projects }) {
     i++;
     step++;
   }
-  return <div className="grid grid-cols-2 ">{items}</div>;
+  return <div className="grid grid-cols-2 gap-6">{items}</div>;
 }

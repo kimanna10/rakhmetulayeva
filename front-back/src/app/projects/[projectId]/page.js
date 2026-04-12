@@ -1,21 +1,6 @@
 import Section from "@/components/layouts/Section";
 import { projectService } from "@/services/projects";
 
-// Генерируем список путей заранее (SSG)
-// SSG (генерация страниц)
-export async function generateStaticParams() {
-  try {
-    const projects = await projectService.getAll();
-
-    return projects.map((project) => ({
-      projectId: project.id.toString(),
-    }));
-  } catch (err) {
-    console.error("Fetch error:", err);
-    return [];
-  }
-}
-
 export default async function ProjectId({ params }) {
   const { projectId } = await params;
 
@@ -38,10 +23,10 @@ export default async function ProjectId({ params }) {
         </div>
 
         <div className="flex flex-col gap-1">
-          <h3 className="text-xl font-semibold uppercase">
+          <h3 className="lg:text-xl text-base lg:font-semibold uppercase">
             {project.subtitle}
           </h3>
-          <p className="whitespace-pre-line text-lg leading-[1.2]">
+          <p className="whitespace-pre-line lg:text-lg text-sm leading-[1.2]">
             {project.desc}
           </p>
         </div>

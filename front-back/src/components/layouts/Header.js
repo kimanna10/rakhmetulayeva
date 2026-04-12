@@ -50,9 +50,9 @@ export default function Header() {
         {/* Десктоп-навигация */}
         <nav className="hidden gap-10 sm:flex">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
+          <NavLink href="/bio">Bio</NavLink>
           <NavLink href="/projects">Projects</NavLink>
-          <NavLink href="/djsets">DJ sets</NavLink>
+          <NavLink href="/dj">DJ</NavLink>
           <NavLink href="/contacts">Contacts</NavLink>
         </nav>
       </div>
@@ -76,14 +76,14 @@ export default function Header() {
         <NavLink href="/" setIsOpen={setIsOpen}>
           Home
         </NavLink>
-        <NavLink href="/about" setIsOpen={setIsOpen}>
-          About
+        <NavLink href="/bio" setIsOpen={setIsOpen}>
+          Bio
         </NavLink>
         <NavLink href="/projects" setIsOpen={setIsOpen}>
           Projects
         </NavLink>
-        <NavLink href="/djsets" setIsOpen={setIsOpen}>
-          DJ Sets
+        <NavLink href="/dj" setIsOpen={setIsOpen}>
+          DJ
         </NavLink>
         <NavLink href="/contacts" setIsOpen={setIsOpen}>
           Contacts

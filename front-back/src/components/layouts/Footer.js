@@ -18,9 +18,9 @@ export default function Footer() {
 
         <div className="flex sm:gap-6 gap-2 sm:text-base text-xs flex-row ">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
+          <NavLink href="/bio">Bio</NavLink>
           <NavLink href="/projects">Projects</NavLink>
-          <NavLink href="/djsets">DJ sets</NavLink>
+          <NavLink href="/dj">DJ</NavLink>
           <NavLink href="/contacts">Contacts</NavLink>
         </div>
       </div>

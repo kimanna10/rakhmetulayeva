@@ -18,11 +18,16 @@ export default function ProjectCard({
         />
       </div>
 
-      <div className="lg:flex lg:flex-row lg:items-end lg:justify-between hidden">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-xl font-semibold uppercase">{project.title}</h3>
-          <p className="text-lg">{project.subtitle}</p>
-        </div>
+      <div className="flex flex-col gap-1">
+        <h3 className="lg:text-xl font-semibold uppercase text-sm leading-tight">
+          {project.title}
+        </h3>
+        {/* <p className="lg:text-lg hidden lg:block text-base">
+            {project.subtitle}
+          </p> */}
+        <p className="hidden lg:inline-block text-base  text-neutral-400">
+          {project.subtitle}
+        </p>
       </div>
     </Link>
   );
