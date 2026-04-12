@@ -38,4 +38,14 @@ export const galleryService = {
     if (error) throw new Error(error.message);
     return data;
   },
+
+  async getAllMain() {
+    const { data, error } = await supabase
+      .from("gallery")
+      .select("*")
+      .eq("type", "main");
+
+    if (error) throw new Error(error.message);
+    return data;
+  },
 };

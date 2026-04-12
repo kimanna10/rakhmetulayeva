@@ -1,5 +1,7 @@
+import Footer from "@/components/layouts/Footer";
 import Header from "@/components/layouts/Header";
 import { Lexend, Manrope } from "next/font/google";
+
 import "./globals.css";
 
 const manropeSans = Manrope({
@@ -24,7 +26,8 @@ export default function RootLayout({ children }) {
         className={`${lexendSans.variable} ${manropeSans.variable}  antialiased bg-bg text-text font-manrope `}
       >
         <Header />
-        {children}
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

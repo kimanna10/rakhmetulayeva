@@ -17,20 +17,21 @@ export default function Header() {
 
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20); // true если прокрутка >20px
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // const [scrolled, setScrolled] = useState(false);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrolled(window.scrollY > 20);
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full py-5 transition-all duration-300 ${
-        isHome && !scrolled ? "bg-transparent" : "bg-white/0 backdrop-blur-md"
+      className={`top-0 left-0 z-50 w-full py-5 transition-all duration-300 ${
+        isHome ? "fixed bg-transparent" : ""
       }`}
     >
       <div className="container flex items-center justify-end px-4 mx-auto ">
@@ -51,7 +52,8 @@ export default function Header() {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/about">About</NavLink>
           <NavLink href="/projects">Projects</NavLink>
-          <NavLink href="/contact">Contacts</NavLink>
+          <NavLink href="/djsets">DJ sets</NavLink>
+          <NavLink href="/contacts">Contacts</NavLink>
         </nav>
       </div>
 
@@ -80,7 +82,10 @@ export default function Header() {
         <NavLink href="/projects" setIsOpen={setIsOpen}>
           Projects
         </NavLink>
-        <NavLink href="/contact" setIsOpen={setIsOpen}>
+        <NavLink href="/djsets" setIsOpen={setIsOpen}>
+          DJ Sets
+        </NavLink>
+        <NavLink href="/contacts" setIsOpen={setIsOpen}>
           Contacts
         </NavLink>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import DesktopGrid from "@/components/sections/projects/DesktopGrid";
+import MobileGrid from "@/components/sections/projects/MobileGrid";
 import { useState } from "react";
 
 export default function ProjectsClient({ projects, categories }) {
@@ -38,40 +39,12 @@ export default function ProjectsClient({ projects, categories }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredProjects.map((project, i) => (
-          <Link
-            key={project.id}
-            href={`/projects/${project.id}`}
-            className={`flex flex-col  justify-center  gap-2.5 ${i % 4 === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
-          >
-            <div className="w-full overflow-hidden aspect-video">
-              {/* <iframe
-                src={project.url}
-                title={project.title}
-                border="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; "
-                referrerPolicy="strict-origin-when-cross-origin"
-                className="w-full h-full"
-                allowFullScreen
-              ></iframe> */}
-              <img
-                src={project.preview}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
+      <div className="lg:hidden">
+        <MobileGrid projects={filteredProjects} />
+      </div>
 
-            <div className="flex flex-col justify-between sm:flex-row sm:items-end sm:justify-between">
-              <div className="flex flex-col gap-1">
-                <h3 className="text-xl font-semibold uppercase">
-                  {project.title}
-                </h3>
-                <p className="text-lg">{project.subtitle}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
+      <div className="hidden lg:block">
+        <DesktopGrid projects={filteredProjects} />
       </div>
     </div>
   );

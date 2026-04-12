@@ -7,12 +7,17 @@ export const projectService = {
   // },
 
   async getAll() {
-    const { data, error } = await supabase.from("projects").select(`
+    const { data, error } = await supabase
+      .from("projects")
+      .select(
+        `
       id, title, subtitle, desc, url, type, created_at, preview,
       projects_categories (
         category (name)
       )
-    `);
+    `,
+      )
+      .order("created_at", { ascending: true });
 
     if (error) {
       console.error(error);

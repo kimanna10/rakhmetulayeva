@@ -1,4 +1,6 @@
 import GoBack from "@/components/ui/GoBack";
+import TopButton from "@/components/ui/TopButton";
+
 export default function Section({ title, children, className = "", id }) {
   return (
     <section className={`w-full md:py-20 py-14 ${className}`} id={id}>
@@ -10,6 +12,7 @@ export default function Section({ title, children, className = "", id }) {
           </h2>
         )}
         {children}
+        <TopButton />
       </div>
     </section>
   );
