@@ -12,11 +12,11 @@ export default async function About() {
     <Section title="About">
       <div className="space-y-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div className="w-full overflow-hidden lg:h-full">
+          <div className="w-full overflow-hidden lg:h-full lg:aspect-square">
             <img
               src={imagesMain[0].url}
               alt="about"
-              className="object-cover w-full h-full"
+              className="object-cover h-full w-full "
             />
           </div>
 
