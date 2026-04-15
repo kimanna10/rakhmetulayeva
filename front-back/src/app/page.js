@@ -1,4 +1,10 @@
+import Section from "@/components/layouts/Section";
+import ScrollDown from "@/components/ui/ScrollDown";
+import { projectService } from "@/services/projects";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 export default async function Home() {
+  const projects = await projectService.getAllFrom("home");
   return (
     <>
       <div className="relative w-screen h-dvh overflow-hidden ">
@@ -23,26 +29,41 @@ export default async function Home() {
     "
           allow="autoplay; fullscreen"
         />
-
-        {/* затемнение */}
-        {/* <div className="absolute inset-0 bg-black/40" /> */}
-
-        {/* текст поверх */}
-        {/* <div className="absolute z-10 flex flex-col justify-end w-full h-full p-10 text-white">
-          <h1 className="text-4xl font-bold uppercase">ввв</h1>
-          <p className="text-xl">вв</p>
-        </div> */}
+        <ScrollDown />
       </div>
-      {/* <Section title="Choreo Portfolio">
-        <div className="mt-12 text-lg text-center">
+
+      <Section title="" id="next-section">
+        <div className="text-lg text-center space-y-14">
+          <div className="flex flex-col gap-14">
+            {projects.map((project, i) => (
+              <Link
+                key={project.id}
+                href={`/projects/${project.id}`}
+                className="group flex flex-col justify-center gap-6"
+              >
+                <h3 className="lg:text-xl font-semibold uppercase text-base leading-tight">
+                  {project.title}
+                </h3>
+                <div className="w-full">
+                  <div className="mx-auto max-w-5xl overflow-hidden">
+                    <img
+                      src={project.preview}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
           <Link
             href="/projects"
-            className="inline-block px-6 py-3 transition rounded-full bg-primary hover:bg-opacity-90"
+            className="inline-flex items-center gap-2 px-6 py-3 text-base uppercase transition rounded-full bg-primary hover:bg-opacity-90"
           >
-            View all →
+            View all <ChevronRight />
           </Link>
         </div>
-      </Section> */}
+      </Section>
     </>
   );
 }

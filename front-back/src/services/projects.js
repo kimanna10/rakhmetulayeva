@@ -30,6 +30,31 @@ export const projectService = {
     }));
   },
 
+  async getAllFrom(page = "home") {
+    const { data, error } = await supabase
+      .from("projects")
+      .select(
+        `
+      id, title, subtitle, desc, url, type, created_at, preview, page, order,
+      projects_categories (
+        category (name)
+      )
+    `,
+      )
+      .eq("page", page) // фильтр по странице
+      .order("order", { ascending: true }); // порядок
+
+    if (error) {
+      console.error(error);
+      return [];
+    }
+
+    return data.map((p) => ({
+      ...p,
+      projects_categories: p.projects_categories.map((pc) => pc.category),
+    }));
+  },
+
   async getById(id) {
     const { data } = await supabase
       .from("projects")

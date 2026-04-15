@@ -31,7 +31,7 @@ export default function Header() {
   return (
     <header
       className={`top-0 left-0 z-50 w-full py-5 transition-all duration-300 ${
-        isHome ? "fixed bg-transparent" : ""
+        isHome ? "absolute bg-transparent" : ""
       }`}
     >
       <div className="container flex items-center justify-end px-4 mx-auto ">
@@ -50,7 +50,7 @@ export default function Header() {
         {/* Десктоп-навигация */}
         <nav className="hidden gap-10 sm:flex">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/bio">Bio</NavLink>
+          <NavLink href="/about">About</NavLink>
           <NavLink href="/projects">Projects</NavLink>
           <NavLink href="/dj">DJ</NavLink>
           <NavLink href="/contacts">Contacts</NavLink>
@@ -76,8 +76,8 @@ export default function Header() {
         <NavLink href="/" setIsOpen={setIsOpen}>
           Home
         </NavLink>
-        <NavLink href="/bio" setIsOpen={setIsOpen}>
-          Bio
+        <NavLink href="/about" setIsOpen={setIsOpen}>
+          About
         </NavLink>
         <NavLink href="/projects" setIsOpen={setIsOpen}>
           Projects

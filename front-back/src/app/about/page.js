@@ -3,13 +3,13 @@ import Slider from "@/components/ui/Slider";
 import { galleryService } from "@/services/gallery";
 
 export const revalidate = 60;
-export default async function Bio() {
+export default async function About() {
   const images = await galleryService.getAll();
 
   const imagesMain = await galleryService.getAllMain();
 
   return (
-    <Section title="Bio">
+    <Section title="About">
       <div className="space-y-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div className="w-full overflow-hidden lg:h-full lg:aspect-square">

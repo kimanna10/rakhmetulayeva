@@ -22,14 +22,14 @@ export default async function ProjectId({ params }) {
           />
         </div>
 
-        <div className="flex flex-col gap-1">
+        {/* <div className="flex flex-col gap-1">
           <h3 className="lg:text-xl text-base lg:font-semibold uppercase">
             {project.subtitle}
           </h3>
           <p className="whitespace-pre-line lg:text-lg text-sm leading-[1.2]">
             {project.desc}
           </p>
-        </div>
+        </div> */}
       </div>
     </Section>
   );
