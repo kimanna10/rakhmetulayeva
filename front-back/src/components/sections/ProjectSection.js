@@ -1,7 +1,6 @@
 "use client";
 
 import DesktopGrid from "@/components/sections/projects/DesktopGrid";
-import MobileGrid from "@/components/sections/projects/MobileGrid";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -60,11 +59,11 @@ export default function ProjectsClient({ projects, categories }) {
         ))}
       </div>
 
-      <div className="lg:hidden">
+      {/* <div className="lg:hidden">
         <MobileGrid projects={filteredProjects} />
-      </div>
+      </div> */}
 
-      <div className="hidden lg:block">
+      <div className="">
         <DesktopGrid projects={filteredProjects} />
       </div>
     </div>

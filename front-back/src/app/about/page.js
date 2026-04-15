@@ -2,10 +2,8 @@ import Section from "@/components/layouts/Section";
 import Slider from "@/components/ui/Slider";
 import { galleryService } from "@/services/gallery";
 
-export const revalidate = 60;
 export default async function About() {
   const images = await galleryService.getAll();
-
   const imagesMain = await galleryService.getAllMain();
 
   return (

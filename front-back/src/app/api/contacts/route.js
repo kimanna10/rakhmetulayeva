@@ -1,4 +1,4 @@
-import { contactService } from "@/services/projects";
+import { contactService } from "@/services/contacts";
 
 export async function GET() {
   const data = await contactService.getAll();

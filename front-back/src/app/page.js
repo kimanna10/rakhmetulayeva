@@ -7,7 +7,7 @@ export default async function Home() {
   const projects = await projectService.getAllFrom("home");
   return (
     <>
-      <div className="relative w-screen h-dvh overflow-hidden ">
+      <div className="relative w-screen h-screen overflow-hidden ">
         {/* <video
           autoPlay
           muted
