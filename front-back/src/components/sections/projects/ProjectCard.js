@@ -5,29 +5,32 @@ export default function ProjectCard({
   className = "",
   aspect = "aspect-video",
 }) {
+  if (!project) return null;
+
   return (
     <Link
-      href={`/projects/${project.id}`}
+      href={`/projects/${project.id || ""}`}
       className={`group flex flex-col justify-center gap-2.5 ${className}`}
     >
       <div className={`w-full overflow-hidden ${aspect}`}>
-        <img
-          src={project.preview}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        {project.preview && (
+          <img
+            src={project.preview}
+            alt={project.title || "Проект"}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
       </div>
 
       <div className="flex flex-col gap-1">
         <h3 className="lg:text-xl font-semibold uppercase text-sm leading-tight">
-          {project.title}
+          {project.title || "Без названия"}
         </h3>
-        {/* <p className="lg:text-lg hidden lg:block text-base">
+        {project.subtitle && (
+          <p className="hidden lg:inline-block text-base text-neutral-400">
             {project.subtitle}
-          </p> */}
-        <p className="hidden lg:inline-block text-base  text-neutral-400">
-          {project.subtitle}
-        </p>
+          </p>
+        )}
       </div>
     </Link>
   );

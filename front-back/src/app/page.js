@@ -1,10 +1,29 @@
 import Section from "@/components/layouts/Section";
 import ScrollDown from "@/components/ui/ScrollDown";
-import { projectService } from "@/services/projects";
+import { getProjectsFromSheet } from "@/lib/data";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+
 export default async function Home() {
-  const projects = await projectService.getAllFrom("home");
+  const rawProjects = await getProjectsFromSheet("projects");
+  const rawCategories = await getProjectsFromSheet("categories");
+
+  const projects = rawProjects
+    .filter((p) => p.page?.trim().toLowerCase() === "home")
+    .sort((a, b) => (Number(a.order) || 999) - (Number(b.order) || 999))
+    .map((p) => ({
+      ...p,
+      // Создаем структуру, которую ждет твой компонент
+      projects_categories: p.category_id
+        ? p.category_id
+            .split(",")
+            .map((id) => {
+              const cat = rawCategories.find((c) => c.id === id.trim());
+              return cat ? { name: cat.name } : null;
+            })
+            .filter(Boolean)
+        : [],
+    }));
   return (
     <>
       <div className="relative w-screen h-screen overflow-hidden ">

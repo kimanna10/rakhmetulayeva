@@ -1,10 +1,15 @@
 import Section from "@/components/layouts/Section";
 import Slider from "@/components/ui/Slider";
-import { galleryService } from "@/services/gallery";
+import { getProjectsFromSheet } from "@/lib/data";
 
 export default async function About() {
-  const images = await galleryService.getAll();
-  const imagesMain = await galleryService.getAllMain();
+  // const images = await galleryService.getAll();
+  // const imagesMain = await galleryService.getAllMain();
+
+  const images = await getProjectsFromSheet("gallery");
+  const imagesMain = images.filter(
+    (img) => img.type?.trim().toLowerCase() === "main",
+  );
 
   return (
     <Section title="About">

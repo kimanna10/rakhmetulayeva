@@ -1,10 +1,11 @@
-import { contactService } from "@/services/contacts";
+import { getProjectsFromSheet } from "@/lib/data";
 import { Mail } from "lucide-react";
 
 export const revalidate = 60;
 
 export default async function ContactSection({ className = "" }) {
-  const contacts = await contactService.getAll();
+  // const contacts = await contactService.getAll();
+  const contacts = await getProjectsFromSheet("contacts");
   const contact = contacts[0]; // Assuming you want the first contact
 
   return (
