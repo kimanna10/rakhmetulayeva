@@ -54,6 +54,7 @@ export default function Header() {
           <NavLink href="/projects">Projects</NavLink>
           <NavLink href="/dj">DJ</NavLink>
           <NavLink href="/contacts">Contacts</NavLink>
+          <NavLink href="/booking">Booking</NavLink>
         </nav>
       </div>
 
@@ -87,6 +88,9 @@ export default function Header() {
         </NavLink>
         <NavLink href="/contacts" setIsOpen={setIsOpen}>
           Contacts
+        </NavLink>
+        <NavLink href="/booking" setIsOpen={setIsOpen}>
+          Booking
         </NavLink>
       </div>
     </header>

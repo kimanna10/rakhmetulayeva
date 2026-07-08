@@ -19,6 +19,7 @@ export default function Footer() {
           <NavLink href="/projects">Projects</NavLink>
           <NavLink href="/dj">DJ</NavLink>
           <NavLink href="/contacts">Contacts</NavLink>
+          <NavLink href="/booking">Booking</NavLink>
         </div>
       </div>
     </footer>
