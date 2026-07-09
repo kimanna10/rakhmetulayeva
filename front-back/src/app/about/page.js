@@ -5,6 +5,7 @@ import { getProjectsFromSheet } from "@/lib/data";
 export const metadata = {
   title: "ABOUT | RAKHMETULAYEVA KAMILA",
 };
+export const revalidate = 10;
 
 export default async function About() {
   // const images = await galleryService.getAll();
