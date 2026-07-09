@@ -34,7 +34,7 @@ export default async function Home() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="https://res.cloudinary.com/dbqsb90lj/video/upload/v1783605117/backvideo-1_afphqr.webm" type="video/webm" />
+          <source src="https://res.cloudinary.com/fzcl6val/video/upload/v1783615711/backvideo-main.webm" type="video/webm" />
         </video> 
 
 
