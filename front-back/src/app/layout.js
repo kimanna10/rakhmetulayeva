@@ -16,7 +16,7 @@ const lexendSans = Lexend({
 export const metadata = {
   title: "RAKHMETULAYEVA KAMILA",
   description:
-    "AKHMETULAYEVA KAMILA - Foun der of TOLK Company | Director | Creative Director | Choreoprapher | Movement Director",
+    "RAKHMETULAYEVA KAMILA - Founder of TOLK Company | Director | Creative Director | Choreoprapher | Movement Director",
 };
 
 export default function RootLayout({ children }) {

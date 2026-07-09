@@ -22,7 +22,7 @@ export default function BookingForm() {
       setStatus("Message sent successfully!");
       setForm({ name: "", email: "", message: "" });
     } else {
-      setStatus("❌ Error sending message!");
+      setStatus("Error sending message!");
     }
   };
 

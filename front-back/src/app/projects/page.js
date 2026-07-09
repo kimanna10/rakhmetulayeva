@@ -3,6 +3,9 @@ import ProjectSection from "@/components/sections/ProjectSection";
 import { getProjectsFromSheet } from "@/lib/data";
 
 export const revalidate = 0;
+export const metadata = {
+  title: "PROJECTS | RAKHMETULAYEVA KAMILA",
+};
 
 export default async function Projects() {
   // const projects = await projectService.getAll();

@@ -2,6 +2,10 @@ import Section from "@/components/layouts/Section";
 import Slider from "@/components/ui/Slider";
 import { getProjectsFromSheet } from "@/lib/data";
 
+export const metadata = {
+  title: "ABOUT | RAKHMETULAYEVA KAMILA",
+};
+
 export default async function About() {
   // const images = await galleryService.getAll();
   // const imagesMain = await galleryService.getAllMain();

@@ -1,6 +1,10 @@
 import Section from "@/components/layouts/Section";
 import { getProjectsFromSheet } from "@/lib/data";
 
+export const metadata = {
+  title: "DJ SETS | RAKHMETULAYEVA KAMILA",
+};
+
 export default async function Dj() {
   const mixes = await getProjectsFromSheet("djsets");
 
