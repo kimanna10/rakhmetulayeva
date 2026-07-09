@@ -8,7 +8,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
         port: "",
-        pathname: "/dbqsb90lj/**", // Ваш ID облака из ошибки
+        pathname: "/fzcl6val/**", // Ваш ID облака из ошибки
       },
     ],
   },
