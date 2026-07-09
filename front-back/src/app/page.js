@@ -27,27 +27,27 @@ export default async function Home() {
   return (
     <>
       <div className="relative w-screen h-screen overflow-hidden ">
-        {/* <video
+         <video
           autoPlay
           muted
           loop
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="/backvideo.webm" type="video/webm" />
-        </video> */}
+          <source src="https://res.cloudinary.com/dbqsb90lj/video/upload/v1783605117/backvideo-1_afphqr.webm" type="video/webm" />
+        </video> 
 
-        <iframe
-          src="https://player.vimeo.com/video/875686258?background=1&autoplay=1&loop=1&muted=1"
-          className="
-      absolute top-1/2 left-1/2
-      w-[177.78vh] h-[100vh]
-      md:w-[100vw] md:h-[56.25vw]
-      -translate-x-1/2 -translate-y-1/2
-      pointer-events-none
-    "
-          allow="autoplay; fullscreen"
-        />
+    //     <iframe
+    //       src="https://player.vimeo.com/video/875686258?background=1&autoplay=1&loop=1&muted=1"
+    //       className="
+    //   absolute top-1/2 left-1/2
+    //   w-[177.78vh] h-[100vh]
+    //   md:w-[100vw] md:h-[56.25vw]
+    //   -translate-x-1/2 -translate-y-1/2
+    //   pointer-events-none
+    // "
+    //       allow="autoplay; fullscreen"
+    //     />
         <ScrollDown />
       </div>
 
