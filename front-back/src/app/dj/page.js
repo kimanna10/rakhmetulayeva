@@ -4,6 +4,7 @@ import { getProjectsFromSheet } from "@/lib/data";
 export const metadata = {
   title: "DJ SETS | RAKHMETULAYEVA KAMILA",
 };
+export const revalidate = 10;
 
 export default async function Dj() {
   const mixes = await getProjectsFromSheet("djsets");
