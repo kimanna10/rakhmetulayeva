@@ -25,7 +25,7 @@ export default async function Home() {
         : [],
     }));
 
-  console.log(projects)
+  console.log(projects);
   return (
     <>
       <div className="relative w-screen h-screen overflow-hidden ">
