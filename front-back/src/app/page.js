@@ -24,6 +24,8 @@ export default async function Home() {
             .filter(Boolean)
         : [],
     }));
+
+  console.log(projects)
   return (
     <>
       <div className="relative w-screen h-screen overflow-hidden ">
