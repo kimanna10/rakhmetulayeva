@@ -4,6 +4,8 @@ import { getProjectsFromSheet } from "@/lib/data";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+export const revalidate = 10;
+
 export default async function Home() {
   const rawProjects = await getProjectsFromSheet("projects");
   const rawCategories = await getProjectsFromSheet("categories");
@@ -25,7 +27,6 @@ export default async function Home() {
         : [],
     }));
 
-  console.log(projects);
   return (
     <>
       <div className="relative w-screen h-screen overflow-hidden ">
