@@ -15,8 +15,18 @@ export default function Header() {
     };
   }, [isOpen]);
 
+  // const pathname = usePathname();
+  // const isHome = pathname === "/";
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  // По умолчанию ставим true, чтобы сразу был прозрачным
+  const [isHome, setIsHome] = useState(true);
+
+  useEffect(() => {
+    // Как только JS загрузился, проверяем реальный путь
+    setIsHome(pathname === "/");
+  }, [pathname]);
+  console.log("isHome:", isHome);
+  console.log("path:", pathname);
 
   // const [scrolled, setScrolled] = useState(false);
   // useEffect(() => {
@@ -31,7 +41,7 @@ export default function Header() {
   return (
     <header
       className={`top-0 left-0 z-50 w-full py-5 transition-all duration-300 ${
-        isHome ? "absolute bg-transparent" : ""
+        isHome ? "absolute bg-transparent" : "relative"
       }`}
     >
       <div className="container flex items-center justify-end px-4 mx-auto ">
@@ -66,6 +76,7 @@ export default function Header() {
             : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
+        x
         <button
           onClick={() => setIsOpen(false)}
           className="absolute text-white top-10 right-4"
@@ -73,7 +84,6 @@ export default function Header() {
         >
           <X size={32} />
         </button>
-
         <NavLink href="/" setIsOpen={setIsOpen}>
           Home
         </NavLink>
