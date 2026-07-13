@@ -76,7 +76,7 @@ export default function Header() {
             : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
-        x
+        
         <button
           onClick={() => setIsOpen(false)}
           className="absolute text-white top-10 right-4"
